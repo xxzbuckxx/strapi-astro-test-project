@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro"
+import SingleBlogItem from "../../components/SingleBlogItem.jsx"
+
+export async function getStaticPaths() {
+    const posts =  await fetch(`http://localhost:1337/api/posts`).then(res => res.json())
+    console.log(posts)
+  return posts.data.map((post:any) =>  ({params : {slug:post.attributes.slug}}))
+}
+
+const {slug} =  Astro.params
+console.log(Astro.request)
+const postItem = await fetch(`http://localhost:1337/api/posts?filters[slug][$eq]=${slug}&populate=*`).then(x  => x.json())
+---
+
+<BaseLayout title={postItem.data[0]?.title}>
+<SingleBlogItem post={postItem.data[0]}/>
+</BaseLayout>

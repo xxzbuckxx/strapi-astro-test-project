@@ -5,14 +5,13 @@ interface BlogGridItemProps {
 }
 
 const BlogGridItem: FunctionalComponent<BlogGridItemProps> = ({ post }) => {
-  const { title, content, slug, featuredImage, excerpt, author } =
-    post.attributes;
+  const { title, slug, featuredImage, excerpt, author } = post.attributes;
 
-  console.log(post.attributes);
+  console.log(author.data);
 
   return (
     <div className="rounded-md overflow-hidden shadow-sm p-4  transition-transform h-auto">
-      <a href={`/post/${slug}`}>
+      <a href={`/blog/${slug}`}>
         <div className="rounded-md h-48 w-full overflow-hidden">
           <img
             className="object-cover w-full h-full"
@@ -33,7 +32,7 @@ const BlogGridItem: FunctionalComponent<BlogGridItemProps> = ({ post }) => {
               class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
               src={
                 author?.bioImage?.url
-                  ? `http://localhost:1337/uploads/${author?.bioImage?.url}`
+                  ? `http://localhost:1337${author?.bioImage?.url}`
                   : "https://via.placeholder.com/1080"
               }
               alt="author picture"
@@ -44,7 +43,7 @@ const BlogGridItem: FunctionalComponent<BlogGridItemProps> = ({ post }) => {
           </div>
           <div class="inline-flex rounded-md ">
             <a
-              href={`/post/${slug}`}
+              href={`/blog/${slug}`}
               class="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-400"
             >
               Read article

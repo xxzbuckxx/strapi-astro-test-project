@@ -2,7 +2,12 @@
 import BlogGrid from "../components/BlogGrid";
 import BaseLayout from "../layout/BaseLayout.astro";
 
+// Need to poplate authors as well to get bioImage (2 depth populate)
 const posts  =  await fetch(`http://localhost:1337/api/posts?populate=*`).then(res => res.json())
+
+const postsSlug =  await fetch(`http://localhost:1337/api/posts`).then(res => res.json())
+console.log(postsSlug)
+console.log(postsSlug.data.map((post:any) =>  ({params : {slug:post.attributes.slug}})))
 ---
 
 <BaseLayout>

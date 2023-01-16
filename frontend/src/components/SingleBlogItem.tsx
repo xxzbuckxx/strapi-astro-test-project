@@ -11,11 +11,13 @@ const SingleBlog: FunctionalComponent<SingleBlogProps> = ({ post }) => {
     title,
     content,
     featuredImage,
-    created_at,
-    updated_at,
+    createdAt,
+    updatedAt,
     readingTime,
     author,
   } = post.attributes || {};
+
+  console.log(post);
 
   return (
     <>
@@ -39,7 +41,7 @@ const SingleBlog: FunctionalComponent<SingleBlogProps> = ({ post }) => {
             </p>
           </span>
           <span>&middot;</span>
-          <span>{format(new Date(created_at), "MM/dd/yyyy")}</span>
+          <span>{format(new Date(createdAt), "MM/dd/yyyy")}</span>
           <span>&middot;</span>
           <span>{readingTime}</span>
         </div>
@@ -48,26 +50,27 @@ const SingleBlog: FunctionalComponent<SingleBlogProps> = ({ post }) => {
         <img
           className="object-cover w-full h-full"
           src={
-            featuredImage
-              ? `http://localhost:1337${featuredImage.url}`
+            featuredImage && featuredImage.data
+              ? `http://localhost:1337${featuredImage.data.attributes.url}`
               : "https://via.placeholder.com/1080"
           }
         />
       </div>
       <article className="prose  max-w-full w-full my-4">
-        <ReactMarkdown
-        // components={{
-        //   img: (props: any) => {
-        //     const copyProps = { ...props };
-        //     if (!props?.src.includes("http")) {
-        //       copyProps.src = `http://localhost:1337${props?.src}`;
-        //     }
-        //     return <img {...copyProps} />;
-        //   },
-        // }}
-        >
+        <p>{content}</p>
+        {/* <ReactMarkdown
+        components={{
+          img: (props: any) => {
+            const copyProps = { ...props };
+            if (!props?.src.includes("http")) {
+              copyProps.src = `http://localhost:1337${props?.src}`;
+            }
+            return <img {...copyProps} />;
+          },
+        }}
+        />
           {content}
-        </ReactMarkdown>
+        </ReactMarkdown> */}
       </article>
     </>
   );
