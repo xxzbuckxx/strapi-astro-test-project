@@ -1,12 +1,14 @@
-# Astro + Preact Example
+# Astro + Preact + tailwind
 
-```
-npm create astro@latest -- --template framework-preact
-```
+A basic blog project using Astro, Preact, Tailwind.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/framework-preact)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/framework-preact)
+## Commands
 
-This example showcases Astro working with [Preact](https://preactjs.com).
+First, install dependencies using `yarn`.
 
-Write your Preact components as `.jsx` or `.tsx` files in your project.
+- `yarn astro dev` - development server
+- `yarn astro build` - build webapp
+- `yarn astro preview` - preview build
+- `yarn astro ...` - run astro commands
+
+
