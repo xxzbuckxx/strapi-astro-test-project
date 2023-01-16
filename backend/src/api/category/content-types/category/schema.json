@@ -4,7 +4,8 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Category"
+    "displayName": "Category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,11 +17,6 @@
     },
     "slug": {
       "type": "uid"
-    },
-    "post": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "admin::user"
     },
     "posts": {
       "type": "relation",
